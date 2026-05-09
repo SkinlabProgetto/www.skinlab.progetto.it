@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, MouseEvent, TouchEvent } from 'react';
 import { motion } from 'motion/react';
 
 interface BeforeAfterSliderProps {
@@ -10,7 +10,7 @@ export function BeforeAfterSlider({ beforeImg, afterImg }: BeforeAfterSliderProp
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleMove = (e: MouseEvent | TouchEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
